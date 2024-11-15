@@ -3,123 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taxus Executor Key Bypasser</title>
+  <title>Taxus Executor Key System</title>
   <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-        /* Smooth fade-in effect for the whole page */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-        .content {
-            text-align: center;
-            opacity: 0;
-            animation: contentFadeIn 2s forwards;
-            animation-delay: 0.5s;
-        }
+    .content {
+      text-align: center;
+      opacity: 0;
+      animation: contentFadeIn 2s forwards;
+      animation-delay: 0.5s;
+    }
 
-        /* Fade-in effect for content */
-        @keyframes contentFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    @keyframes contentFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .key-display, .refresh-button {
-            display: none;
-            font-size: 24px;
-            margin-top: 20px;
-            animation: buttonFadeIn 1s forwards;
-        }
+    .key-display, .refresh-button {
+      display: none;
+      font-size: 24px;
+      margin-top: 20px;
+      animation: buttonFadeIn 1s forwards;
+    }
 
-        /* Button styles and hover/focus animations */
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            opacity: 0;
-            animation: buttonFadeIn 1s forwards;
-            transition: transform 0.2s ease, background-color 0.3s ease;
-        }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      opacity: 0;
+      animation: buttonFadeIn 1s forwards;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
 
-        button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
 
-        button:focus {
-            outline: none;
-            box-shadow: 0 0 5px #4CAF50;
-        }
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 5px #4CAF50;
+    }
 
-        /* Animation for buttons appearing */
-        @keyframes buttonFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    @keyframes buttonFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .key-text {
-            font-size: 24px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            display: inline-block;
-            border-radius: 5px;
-        }
+    .key-text {
+      font-size: 24px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      display: inline-block;
+      border-radius: 5px;
+    }
 
-        /* Animations for background particles */
-        @keyframes particleMovement {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-200px, -200px);
-            }
-        }
-
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: white;
-            border-radius: 50%;
-            animation: particleMovement 3s infinite;
-            opacity: 0.7;
-        }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 14px;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -135,68 +121,57 @@
     </div>
   </div>
 
+  <div class="footer">
+    Cracked by Haptic
+  </div>
+
   <script>
-        const fallbackKey = 'BackupKey123';
-        const keyUrl = 'https://raw.githubusercontent.com/funhaji/Rafashub/refs/heads/main/Keys';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    const keyUrl = 'https://pastebin.com/raw/C37xFRiJ'; // The original key URL
+    const fallbackKey = 'BackupKey123';
 
-        // Function to generate and fetch the key
-        function generateKey() {
-            fetch(keyUrl)
-                .then(response => response.text())
-                .then(data => {
-                    const keys = data.split('\n').filter(line => line.trim() !== '');
-                    const randomKey = keys.length ? keys[Math.floor(Math.random() * keys.length)] : fallbackKey;
-                    showKey(randomKey);
-                })
-                .catch(error => {
-                    console.error('Error fetching key:', error);
-                    showKey(fallbackKey); // Show fallback key if fetch fails
-                });
-        }
+    // Function to generate and fetch the key
+    function generateKey() {
+      fetch(proxyUrl + encodeURIComponent(keyUrl))
+        .then(response => response.text())
+        .then(data => {
+          const keys = data.split('\n').filter(line => line.trim() !== '');
+          const randomKey = keys.length ? keys[Math.floor(Math.random() * keys.length)] : fallbackKey;
+          showKey(randomKey);
+        })
+        .catch(error => {
+          console.error('Error fetching key:', error);
+          showKey(fallbackKey); // Show fallback key if fetch fails
+        });
+    }
 
-        // Function to display the key
-        function showKey(key) {
-            document.getElementById('key-display').textContent = key;
-            document.querySelector('.key-display').style.display = 'block';
-            document.getElementById('copy-button').style.display = 'inline-block';
-            document.getElementById('refresh-button').style.display = 'inline-block';
-        }
+    // Function to display the key
+    function showKey(key) {
+      document.getElementById('key-display').textContent = key;
+      document.querySelector('.key-display').style.display = 'block';
+      document.getElementById('copy-button').style.display = 'inline-block';
+      document.getElementById('refresh-button').style.display = 'inline-block';
+    }
 
-        // Function to copy the key to clipboard
-        function copyKey() {
-            const key = document.getElementById('key-display').textContent;
-            navigator.clipboard.writeText(key).then(() => alert('Key copied to clipboard!'));
-        }
+    // Function to copy the key to clipboard
+    function copyKey() {
+      const key = document.getElementById('key-display').textContent;
+      navigator.clipboard.writeText(key).then(() => alert('Key copied to clipboard!'));
+    }
 
-        // Function to refresh the key
-        function refreshKey() {
-            resetUI(); // Reset UI to initial state
-            generateKey(); // Fetch a new key
-        }
+    // Function to refresh the key
+    function refreshKey() {
+      resetUI(); // Reset UI to initial state
+      generateKey(); // Fetch a new key
+    }
 
-        // Function to reset the UI to initial state
-        function resetUI() {
-            document.querySelector('.key-display').style.display = 'none';
-            document.getElementById('copy-button').style.display = 'none';
-            document.getElementById('refresh-button').style.display = 'none';
-            document.getElementById('key-display').textContent = '';
-        }
-
-        // Function to add background particles
-        function createParticles() {
-            for (let i = 0; i < 100; i++) {
-                let particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * window.innerWidth}px`;
-                particle.style.top = `${Math.random() * window.innerHeight}px`;
-                document.body.appendChild(particle);
-                particle.style.animationDuration = `${Math.random() * 5 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-            }
-        }
-
-        // Run functions on page load
-        createParticles();
+    // Function to reset the UI to initial state
+    function resetUI() {
+      document.querySelector('.key-display').style.display = 'none';
+      document.getElementById('copy-button').style.display = 'none';
+      document.getElementById('refresh-button').style.display = 'none';
+      document.getElementById('key-display').textContent = '';
+    }
   </script>
 </body>
 </html>
